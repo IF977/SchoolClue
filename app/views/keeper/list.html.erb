@@ -1,0 +1,12 @@
+<h1>Keeper#list</h1>
+      <h2>list of schools in your radius:</h2>
+      <ul>
+      <% @points_in_radius.each do |school| %>
+        <li><%= school.name %></li>
+        <li><%= school.email %></li>
+        <li><%= school.phone %></li>
+        <li><%= school.lat %></li>
+        <li><%= school.lon %></li>
+      <% end %>
+      </ul>
+
