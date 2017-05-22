@@ -9,7 +9,7 @@ Feature: keeper
     And put <longitude> on the longitude input
     And put <radius> on the radius input
     And click on the Enviar button
-    Then I should see the schools on my location range.
+    Then I should see the schools on my location range
     
     Examples:
       | latitude | longitude | radius |
