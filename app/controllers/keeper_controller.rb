@@ -7,23 +7,16 @@ class KeeperController < ApplicationController
       @keeper_point = point
       set_point params
       if validate_point
-    puts '---------------------------------------'
-    puts @keeper_point[:latitude]
-    puts @keeper_point[:longitude]
-    puts @keeper_point[:radius]
-    puts '---------------------------------------'
         @points_in_radius = search_points_in_radius(@keeper_point)
-        render :list
-      else
-        format.json { render json: @keeper_point, status: :unprocessable_entity }
+        render action: "list"
       end
-    else
-        @keeper_point = point
-        render :location
     end
   end
 
   def list
+    if request.post?
+      render action: "rank"
+    end
   end
 
   def rank

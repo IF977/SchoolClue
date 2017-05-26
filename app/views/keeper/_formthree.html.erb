@@ -1,0 +1,33 @@
+<%= form_tag "/keeper/list" do %>
+
+  <h2>lista de atividades complementares para seu filho</h2>
+  <div class="field">
+    <%= label(:Canto_coral, 'Canto coral') %><br>
+    <%= check_box_tag 'Canto coral' %><br>
+    <%= label(:Hip_Hop, 'Hip Hop') %><br>
+    <%= check_box_tag 'Hip Hop' %><br>
+    <%= label(:Banda, 'Banda') %><br>
+    <%= check_box_tag 'Banda' %><br>
+    <%= label(:Flauta_Doce, 'Flauta Doce') %><br>
+    <%= check_box_tag 'Flauta Doce' %><br>
+    <%= label(:Instrumentos_de_Cordas, 'Instrumentos de Cordas') %><br>
+    <%= check_box_tag 'Instrumentos de Cordas' %><br>
+    <%= label(:Musica, 'Musica') %><br>
+    <%= check_box_tag 'Música' %><br>
+    <%= label(:Percussao, 'Percussao') %><br>
+    <%= check_box_tag 'Percussao' %><br>
+    <%= label(:Desenho, 'Desenho') %><br>
+    <%= check_box_tag 'Desenho' %><br>
+    <%= label(:radius, 'radius') %><br>
+    <%= check_box_tag 'radius' %><br>
+    <%= label(:Escultura_e_Ceramica, 'Escultura e Ceramica') %><br>
+    <%= check_box_tag 'Escultura e Ceramica' %><br>
+    <%= label(:longitude, 'longitude') %><br>
+    <%= check_box_tag 'longitude' %><br>
+    <%= label(:radius, 'radius') %><br>
+    <%= check_box_tag 'radius' %><br>
+  </div>
+  <div class="actions">
+    <%= submit_tag 'Enviar' %>
+  </div>
+<% end %>
