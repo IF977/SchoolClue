@@ -4,15 +4,14 @@ Rails.application.routes.draw do
   
   get 'keeper/index'
 
-  get 'keeper/location'
-  post 'keeper/location'
-
-  get 'keeper/list'
-  post 'keeper/list'
+  get 'keeper/form'
 
   get 'keeper/rank'
+  post 'keeper/rank'
 
-  resources :schools
+  get 'keeper/contato'
+
+  #resources :schools
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

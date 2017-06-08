@@ -4,7 +4,7 @@ Feature: keeper
     To acess the school list near me
  
   Scenario Outline: Sucessfull select the location
-    Given I am on the location page
+    Given I am on the form page
     When put <latitude> on the latitude input
     And put <longitude> on the longitude input
     And put <radius> on the radius input

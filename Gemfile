@@ -7,6 +7,11 @@ gem 'rails', '4.2.5'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: :development
 
+# For API requests and responses
+gem 'httparty'
+# Use Redis for memory cache
+gem 'redis-rails'
+
 gem 'pg', '0.18.1', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

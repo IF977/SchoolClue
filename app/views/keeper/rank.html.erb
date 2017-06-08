@@ -1,2 +1,11 @@
-<h1>Keeper#rank</h1>
-<p>Find me in app/views/keeper/rank.html.erb</p>
+<h1>Keeper# schools rank</h1>
+      <ul>
+      <% @schools_in_range.results.each do |school| %>
+        <br>
+        <li><%= school["name"] %></li>
+        <li><%= school["geometry"]["location"]["lat"] %></li>
+        <li><%= school["geometry"]["location"]["lng"] %></li>
+        <li><%= school["vicinity"]%></li>
+        <br>
+      <% end %>
+      </ul>
