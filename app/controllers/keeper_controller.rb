@@ -15,16 +15,60 @@ class KeeperController < ApplicationController
   end
 
   def rank
-    @schools_in_range = Google.new(params)
-    @schools_in_open_data = Dados.new
+    @schools_in_range = Google.new(params).results
+    @schools_in_open_data = Dados.new.results
+    @schools_final_list = Array.new
+    
+    for school_in_google in @schools_in_range
+      @discipline_list = Array.new
+      for school_in_dados in @schools_in_open_data
+        if string_difference_percent(school_in_google["name"], school_in_dados["nome"])
+          @discipline_list.push(school_in_dados)
+        end
+      end
+      school_in_google["atividades_complementares"] = @discipline_list
+      @schools_final_list.push(school_in_google)
+      #puts @schools_final_list.length
+      #puts(@schools_final_list.first.each {|key, value| puts "#{key} is #{value}" })
+    end
+    
     #puts("---------------------------------------------------------------------------------------------")
     #@schools_in_range.results.each {|x| puts(x["geometry"]["location"]["distance"])}
+    #@schools_final_list = @schools_in_range.results.each {|school_in_google| @schools_in_open_data.results.each {|school_in_dados| (string_difference_percent(school_in_google["name"], school_in_dados["nome"]) > 0.7) ? school_in_google.merge(school_in_dados) : school_in_google}}
+
+    #@schools_in_range.results.each {|school_in_google| @schools_in_open_data.results.each {|school_in_dados| (string_difference_percent(school_in_google["name"], school_in_dados["nome"]) > 0.7) ? true : false}}
+    ##puts(@schools_final_list.each{|x|puts(x)})
+
+
+    #@schools_in_range.results.each {|x| x.each{|key,value| puts "#{key}:#{value}"}}
+    #puts('-------------------------------------------------------------------------------------')
+    #puts(string_difference_percent('Municipal Boa Esperança'.downcase,'ESCOLA MUNICIPAL BOA ESPERANCA'.downcase))
+    #puts('-------------------------------------------------------------------------------------')
+    #puts('-------------------------------------------------------------------------------------')
+    #puts(string_difference_percent('E','e'))
+    #puts('-------------------------------------------------------------------------------------')
   end
   
   def contato
   end
   
   private
+  
+  def string_difference_percent(a, b)
+    #jarow = String::Similarity.levenshtein_distance
+    @cosine = String::Similarity.cosine(a.downcase.split("escola").join("").split("municipal").join("").split(" ").join(""),b.downcase.split("escola").join("").split("municipal").join("").split(" ").join(""))
+    @levenshtein = String::Similarity.levenshtein_distance(a.downcase.split("escola").join("").split("municipal").join("").split(" ").join(""),b.downcase.split("escola").join("").split("municipal").join("").split(" ").join(""))
+    #puts(@resultado)
+    if @levenshtein < 10 and @cosine > 0.70
+      return true
+    else
+      return false
+    end
+  end
+  
+  def percent(a, b)
+    return @resultado
+  end
   
   def regra_de_tres (proporcao,grandezas)
     return 1 / ((grandeza[0]/grandeza[1]) **  proporcao) 

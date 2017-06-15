@@ -1,3 +1,3 @@
-Then(/^I should see the ([^"]*) on my location range$/) do |text|
+Then(/^I should see the ([^"]*)$/) do |text|
     expect(page).to have_content(text)
 end

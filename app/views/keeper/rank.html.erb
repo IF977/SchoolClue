@@ -1,11 +1,25 @@
 <h1>Keeper# schools rank</h1>
       <ul>
-      <% @schools_in_range.results.each do |school| %>
+      <% @schools_final_list.each do |school| %>
         <br>
-        <li><%= school["name"] %></li>
-        <li><%= school["geometry"]["location"]["lat"] %></li>
-        <li><%= school["geometry"]["location"]["lng"] %></li>
-        <li><%= school["vicinity"]%></li>
+        <li>nome do google: <%= school["name"] %></li>
+        <li>nome do dados: <%= (school["atividades_complementares"].empty?) ? " " : school["atividades_complementares"].first["nome"] %></li>
+        <li>latitude: <%= school["geometry"]["location"]["lat"] %></li>
+        <li>longitude: <%= school["geometry"]["location"]["lng"] %></li>
+        <li>endereço: <%= school["vicinity"]%></li>
+        <li>telefone: <%= (school["atividades_complementares"].empty?) ? "sem dados" : school["atividades_complementares"].first["telefone"]%></li>
+        <li>email: <%= (school["atividades_complementares"].empty?) ? "sem dados" : school["atividades_complementares"].first["email"]%></li>
+        <li>atividade ofertada: <%= school["Atividades_complementares"]%></li>
+        <br>
+        <% unless school["atividades_complementares"].empty? %>
+          <lu>
+            <% school["atividades_complementares"].each do |atividade| %>
+            <li><%= atividade["nome_atividade"]%></li>
+            <% end %>
+          </lu>
+        <% end %>
+        <br>
+        <br>
         <br>
       <% end %>
       </ul>
