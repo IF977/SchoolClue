@@ -31,4 +31,4 @@ o algoritmo de raquemento apresenta muito mais opções porem ainda falta polir 
 Lições aprendidas
 
 Melhor entendimento de buscas e criação de relacionamentos complexos entre hash's
-Algoritmos de similariedade de string(cosine, levenshtein_distance e etc)
+Algoritmos de similarie1dade de string(cosine, levenshtein_distance e etc)
