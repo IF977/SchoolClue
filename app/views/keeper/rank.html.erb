@@ -1,24 +1,18 @@
-<h1>Keeper# schools rank</h1>
-      <ul>
+<div style="width:50%;background-color:white;margin:auto;">
+<h1>Schools rank</h1>
       <% @schools_final_list.each do |school| %>
-        <br>
-        <li>nome do google: <%= school["name"] %></li>
-        <li>nome do dados: <%= (school["atividades_complementares"].empty?) ? " " : school["atividades_complementares"].first["nome"] %></li>
-        <li>distancia: <%= school["geometry"]["location"]["distance"] %> Km</li>
-        <li>latitude: <%= school["geometry"]["location"]["lat"] %></li>
-        <li>longitude: <%= school["geometry"]["location"]["lng"] %></li>
-        <li>endereço: <%= school["vicinity"]%></li>
-        <li>telefone: <%= (school["atividades_complementares"].empty?) ? "sem dados" : school["atividades_complementares"].first["telefone"]%></li>
-        <li>email: <%= (school["atividades_complementares"].empty?) ? "sem dados" : school["atividades_complementares"].first["email"]%></li>
-        <li>atividade ofertada:</li>
-        <br>
+        <div style="margin-top:5%">
+        <p><strong>Nome:</strong> <%= school["name"] %></p>
+        <p><strong>distancia:</strong> <%= school["geometry"]["location"]["distance"] %> Km</p>
+        <p><strong>Endereço:</strong> <%= school["vicinity"]%></p>
+        <p><strong>Telefone:</strong> <%= (school["atividades_complementares"].empty?) ? "dados não encontrados" : school["atividades_complementares"].first["telefone"]%></p>
+        <p><strong>Email:</strong> <%= (school["atividades_complementares"].empty?) ? "dados não encontrados" : school["atividades_complementares"].first["email"]%></p>
+        <p><strong>Atividades ofertadas:</strong></p>
         <% unless school["atividades_complementares"].empty? %>
             <% school["atividades_complementares"].each do |atividade| %>
-            <li><%= atividade["nome_atividade"]%></li>
+            <p><%= atividade["nome_atividade"]%></p>
             <% end %>
         <% end %>
-        <br>
-        <br>
-        <br>
+        </div>
       <% end %>
-      </ul>
+</div>

@@ -31,6 +31,9 @@ class KeeperController < ApplicationController
   private
   require 'active_support/inflector'
   def comparestring(s1, s2)
+    if (s1 or s2).is_a? Numeric
+     raise "Não é permitido números"
+    end
     @count=0
     if s1.split.length>=s2.split.length
         @smaior=s1
